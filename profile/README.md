@@ -1,9 +1,6 @@
 <p align="center">
   <a href="https://edictum.ai">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/edictum-ai/.github/main/assets/shield-dark.svg">
-      <img src="https://raw.githubusercontent.com/edictum-ai/.github/main/assets/shield-light.svg" width="72" alt="Edictum">
-    </picture>
+    <img src="https://edictum.ai/logo-shield.svg" width="72" alt="Edictum">
   </a>
 </p>
 
