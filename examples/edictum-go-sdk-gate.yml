@@ -1,0 +1,24 @@
+# edictum-go (Go) — place at .github/workflows/sdk-gate.yml
+name: SDK Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: sdk-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    uses: edictum-ai/.github/.github/workflows/sdk-gate.yml@main
+    with:
+      runtime: go
+      runtime-version: '1.25'
+      setup-command: go mod download
+      test-command: go test -race ./...
+      # Uncomment when conformance runner is wired up:
+      # conformance-command: go test -run "TestConformance" ./...
+      # fixture-ref: main

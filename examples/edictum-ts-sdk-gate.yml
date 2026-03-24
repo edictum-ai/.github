@@ -1,0 +1,24 @@
+# edictum-ts (TypeScript) — place at .github/workflows/sdk-gate.yml
+name: SDK Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: sdk-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    uses: edictum-ai/.github/.github/workflows/sdk-gate.yml@main
+    with:
+      runtime: node
+      runtime-version: '22'
+      setup-command: pnpm install --frozen-lockfile
+      test-command: pnpm -r build && pnpm -r test
+      # Uncomment when conformance runner is wired up:
+      # conformance-command: EDICTUM_FIXTURES_DIR=edictum-schemas/fixtures pnpm --filter @edictum/core test -- --grep "conformance"
+      # fixture-ref: main

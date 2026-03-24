@@ -1,0 +1,211 @@
+# Reusable SDK gate workflow for edictum-ai repos.
+# Runs native tests + optional shared conformance fixtures.
+# Fails hard on any error — designed to gate PRs and releases.
+#
+# Caller usage (e.g., edictum/.github/workflows/sdk-gate.yml):
+#
+#   jobs:
+#     gate:
+#       uses: edictum-ai/.github/.github/workflows/sdk-gate.yml@main
+#       with:
+#         runtime: python
+#         runtime-version: '3.13'
+#         setup-command: pip install -e ".[dev,yaml,sinks,cli]"
+#         test-command: pytest tests/ -v
+#         conformance-command: pytest tests/conformance/ -v
+#         fixture-ref: main
+#
+# Security notes:
+# - All action refs are SHA-pinned (supply chain hardening).
+# - persist-credentials: false on all checkout steps.
+# - Fixture checkout uses sparse-checkout (only fixtures/ dir).
+# - fixture-ref is validated to alphanumeric + ._/- before use.
+# - This workflow accepts arbitrary shell commands via inputs. It MUST
+#   only be called from trusted repos with branch protection — never
+#   from pull_request_target or untrusted forks.
+
+name: SDK Gate
+
+on:
+  workflow_call:
+    inputs:
+      runtime:
+        description: 'Runtime: python, node, or go'
+        required: true
+        type: string
+      runtime-version:
+        description: 'Runtime version (e.g., "3.13", "22", "1.25")'
+        required: true
+        type: string
+      setup-command:
+        description: 'Command to install dependencies before tests'
+        required: true
+        type: string
+      test-command:
+        description: 'Command to run native repo tests'
+        required: true
+        type: string
+      conformance-command:
+        description: 'Command to run shared conformance fixtures (skipped if empty)'
+        required: false
+        type: string
+        default: ''
+      fixture-ref:
+        description: 'Branch, tag, or SHA of edictum-schemas for fixtures'
+        required: false
+        type: string
+        default: 'main'
+
+jobs:
+  native-tests:
+    name: Tests (${{ inputs.runtime }} ${{ inputs.runtime-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Validate runtime
+        env:
+          RUNTIME: ${{ inputs.runtime }}
+        run: |
+          case "$RUNTIME" in
+            python|node|go) ;;
+            *) echo "::error::Unsupported runtime: ${RUNTIME}. Must be python, node, or go."; exit 1 ;;
+          esac
+
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+
+      # --- runtime setup (only the matching block runs) ---
+
+      - name: Setup Python
+        if: inputs.runtime == 'python'
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ inputs.runtime-version }}
+          cache: pip
+
+      - name: Setup Node
+        if: inputs.runtime == 'node'
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ inputs.runtime-version }}
+          cache: pnpm
+
+      - name: Setup pnpm
+        if: inputs.runtime == 'node'
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+
+      - name: Setup Go
+        if: inputs.runtime == 'go'
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
+        with:
+          go-version: ${{ inputs.runtime-version }}
+
+      # --- install + test ---
+
+      - name: Install dependencies
+        run: ${{ inputs.setup-command }}
+
+      - name: Run tests
+        run: ${{ inputs.test-command }}
+
+  conformance:
+    name: Conformance (${{ inputs.runtime }})
+    needs: native-tests
+    if: inputs.conformance-command != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Validate inputs
+        env:
+          RUNTIME: ${{ inputs.runtime }}
+          FIXTURE_REF: ${{ inputs.fixture-ref }}
+        run: |
+          set -euo pipefail
+          case "$RUNTIME" in
+            python|node|go) ;;
+            *) echo "::error::Unsupported runtime: ${RUNTIME}"; exit 1 ;;
+          esac
+          if ! echo "$FIXTURE_REF" | grep -qE '^[a-zA-Z0-9._/-]+$'; then
+            echo "::error::Invalid fixture-ref: contains disallowed characters"
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+
+      - name: Checkout fixtures
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: edictum-ai/edictum-schemas
+          ref: ${{ inputs.fixture-ref }}
+          path: edictum-schemas
+          sparse-checkout: |
+            fixtures
+          persist-credentials: false
+
+      - name: Verify fixtures exist
+        env:
+          FIXTURE_REF: ${{ inputs.fixture-ref }}
+        run: |
+          set -euo pipefail
+          if [ ! -d "edictum-schemas/fixtures" ]; then
+            echo "::error::No fixtures found in edictum-schemas@${FIXTURE_REF}"
+            exit 1
+          fi
+          count=$(find edictum-schemas/fixtures \( -name '*.yaml' -o -name '*.json' \) -print | wc -l)
+          echo "Found $count fixture file(s)"
+          {
+            echo "## Conformance fixtures ($count files)"
+            find edictum-schemas/fixtures \( -name '*.yaml' -o -name '*.json' \) -print | sort | while IFS= read -r f; do
+              echo "- \`${f}\`"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # --- runtime setup ---
+
+      - name: Setup Python
+        if: inputs.runtime == 'python'
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ inputs.runtime-version }}
+          cache: pip
+
+      - name: Setup Node
+        if: inputs.runtime == 'node'
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ inputs.runtime-version }}
+          cache: pnpm
+
+      - name: Setup pnpm
+        if: inputs.runtime == 'node'
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+
+      - name: Setup Go
+        if: inputs.runtime == 'go'
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
+        with:
+          go-version: ${{ inputs.runtime-version }}
+
+      # --- install + conformance ---
+
+      - name: Install dependencies
+        run: ${{ inputs.setup-command }}
+
+      - name: Run conformance tests
+        env:
+          EDICTUM_FIXTURES_DIR: edictum-schemas/fixtures
+        run: ${{ inputs.conformance-command }}
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: conformance-failures-${{ inputs.runtime }}
+          path: |
+            edictum-schemas/fixtures/
+          retention-days: 7

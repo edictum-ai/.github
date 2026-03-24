@@ -1,0 +1,24 @@
+# edictum (Python) — place at .github/workflows/sdk-gate.yml
+name: SDK Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: sdk-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    uses: edictum-ai/.github/.github/workflows/sdk-gate.yml@main
+    with:
+      runtime: python
+      runtime-version: '3.13'
+      setup-command: pip install -e ".[dev,yaml,sinks,cli]"
+      test-command: pytest tests/ -v
+      # Uncomment when conformance runner is wired up in tests/:
+      # conformance-command: pytest tests/conformance/ -v
+      # fixture-ref: main
