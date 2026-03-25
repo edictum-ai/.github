@@ -50,6 +50,11 @@ on:
         required: false
         type: string
         default: ''
+      runner:
+        description: 'GitHub Actions runner label (e.g., ubuntu-latest, blacksmith-4vcpu-ubuntu-2404-arm)'
+        required: false
+        type: string
+        default: 'ubuntu-latest'
       fixture-ref:
         description: 'Branch, tag, or SHA of edictum-schemas for fixtures'
         required: false
@@ -59,7 +64,7 @@ on:
 jobs:
   native-tests:
     name: Tests (${{ inputs.runtime }} ${{ inputs.runtime-version }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     timeout-minutes: 15
     steps:
       - name: Validate runtime
@@ -114,7 +119,7 @@ jobs:
     name: Conformance (${{ inputs.runtime }})
     needs: native-tests
     if: inputs.conformance-command != ''
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     timeout-minutes: 10
     steps:
       - name: Validate inputs
