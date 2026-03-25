@@ -85,16 +85,16 @@ jobs:
           python-version: ${{ inputs.runtime-version }}
           cache: pip
 
+      - name: Setup pnpm
+        if: inputs.runtime == 'node'
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+
       - name: Setup Node
         if: inputs.runtime == 'node'
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ inputs.runtime-version }}
           cache: pnpm
-
-      - name: Setup pnpm
-        if: inputs.runtime == 'node'
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
 
       - name: Setup Go
         if: inputs.runtime == 'go'
@@ -174,16 +174,16 @@ jobs:
           python-version: ${{ inputs.runtime-version }}
           cache: pip
 
+      - name: Setup pnpm
+        if: inputs.runtime == 'node'
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+
       - name: Setup Node
         if: inputs.runtime == 'node'
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ inputs.runtime-version }}
           cache: pnpm
-
-      - name: Setup pnpm
-        if: inputs.runtime == 'node'
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
 
       - name: Setup Go
         if: inputs.runtime == 'go'
