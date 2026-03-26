@@ -1,54 +1,62 @@
-<p align="center">
-  <a href="https://edictum.ai">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/edictum-ai/.github/main/assets/shield-dark.svg" width="72">
-      <img src="https://raw.githubusercontent.com/edictum-ai/.github/main/assets/shield-light.svg" width="72" alt="Edictum">
-    </picture>
-  </a>
-</p>
+<div align="center">
 
-<h3 align="center">Runtime contract enforcement for AI agent tool calls</h3>
+# Edictum
 
-<p align="center">
-  Deterministic YAML contracts that execute outside the model.<br>
-  Can't be prompt-injected. Fail-closed by default.
-</p>
+**Runtime contract enforcement for AI agent tool calls**
 
-<p align="center">
-  <a href="https://pypi.org/project/edictum/"><img src="https://img.shields.io/pypi/v/edictum?color=F59E0B&label=PyPI" alt="PyPI"></a>&nbsp;
-  <a href="https://github.com/edictum-ai/edictum/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-F59E0B" alt="MIT License"></a>&nbsp;
-  <a href="https://arxiv.org/abs/2602.16943"><img src="https://img.shields.io/badge/arXiv-2602.16943-b31b1b" alt="arXiv"></a>&nbsp;
-  <a href="https://docs.edictum.ai"><img src="https://img.shields.io/badge/docs-edictum.ai-475569" alt="Docs"></a>
-</p>
+Deterministic YAML contracts that execute outside the model.<br>
+Can't be prompt-injected. Fail-closed by default. 55us overhead.
+
+[![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
+[![npm](https://img.shields.io/npm/v/edictum?label=npm&color=blue)](https://www.npmjs.com/package/edictum)
+[![Go Reference](https://pkg.go.dev/badge/github.com/edictum-ai/edictum-go.svg)](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![arXiv](https://img.shields.io/badge/arXiv-2503.07918-b31b1b.svg)](https://arxiv.org/abs/2503.07918)
+[![Docs](https://img.shields.io/badge/docs-edictum.ai-blue)](https://docs.edictum.ai)
+
+</div>
 
 ---
 
-### [`edictum`](https://github.com/edictum-ai/edictum) — Core Library
+## SDKs
 
-YAML contracts govern what agents do with tools — before the call executes. 8 framework adapters. Zero dependencies. ~55µs overhead.
+| SDK | Install | Adapters |
+|-----|---------|----------|
+| [**Python**](https://github.com/edictum-ai/edictum) | `pip install edictum` | LangChain, CrewAI, Agno, Semantic Kernel, OpenAI Agents, Claude SDK, Nanobot, Google ADK |
+| [**TypeScript**](https://github.com/edictum-ai/edictum-ts) | `npm install edictum` | Claude SDK, LangChain, OpenAI Agents, OpenClaw, Vercel AI |
+| [**Go**](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | ADK Go, Anthropic, Eino, Genkit, LangChain Go |
 
+## Console
+
+Self-hostable ops console for HITL approvals, audit feeds, and fleet monitoring.
+
+```bash
+docker pull ghcr.io/edictum-ai/edictum-console
 ```
+
+[edictum-console](https://github.com/edictum-ai/edictum-console) -- all 3 SDKs connect via `edictum[server]`
+
+## Gate
+
+Governance for coding assistants (Claude Code, Cursor, Windsurf).
+
+```bash
 pip install edictum
 ```
 
-### [`edictum-console`](https://github.com/edictum-ai/edictum-console) — Operations Console
+[Learn more](https://docs.edictum.ai/gate)
 
-Self-hosted management plane. Fleet monitoring · HITL approvals · hot-reload contracts · audit feeds · Slack / Telegram / Discord.
+## More
 
-```
-docker pull ghcr.io/edictum-ai/edictum-console:latest
-```
-
-### Edictum Gate — Coding Assistant Governance
-
-Pre-execution contracts for Claude Code, Cursor, Copilot CLI. Every tool call evaluated before it runs.
-
-```
-pip install edictum[gate]
-```
+| Repo | What |
+|------|------|
+| [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Contract bundle JSON Schema (single source of truth) |
+| [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Scenario demos, adversarial tests, benchmarks |
 
 ---
 
-<p align="center">
-  <a href="https://edictum.ai">Website</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://docs.edictum.ai">Docs</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://arxiv.org/abs/2602.16943">Research — arXiv:2602.16943</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://pypi.org/project/edictum/">PyPI</a>
-</p>
+<div align="center">
+
+[Website](https://edictum.ai) · [Docs](https://docs.edictum.ai) · [Research](https://arxiv.org/abs/2503.07918) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/edictum)
+
+</div>
