@@ -25,7 +25,7 @@ Deterministic YAML contracts that execute outside the model — can't be prompt-
 | SDK | Install | Adapters |
 |-----|---------|----------|
 | [**Python**](https://github.com/edictum-ai/edictum) | `pip install edictum` | LangChain, CrewAI, Agno, Semantic Kernel, OpenAI Agents, Claude SDK, Nanobot, Google ADK |
-| [**TypeScript**](https://github.com/edictum-ai/edictum-ts) | `npm install edictum` | Claude SDK, LangChain, OpenAI Agents, OpenClaw, Vercel AI |
+| [**TypeScript**](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core` | Vercel AI, Claude SDK, LangChain, OpenAI Agents, OpenClaw |
 | [**Go**](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | ADK Go, Anthropic, Eino, Genkit, LangChain Go |
 
 ---
