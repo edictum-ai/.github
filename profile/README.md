@@ -8,10 +8,10 @@ Deterministic YAML contracts that execute outside the model.<br>
 Can't be prompt-injected. Fail-closed by default. 55us overhead.
 
 [![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
-[![npm](https://img.shields.io/npm/v/edictum?label=npm&color=blue)](https://www.npmjs.com/package/edictum)
+[![npm](https://img.shields.io/npm/v/@edictum/core?label=npm&color=blue)](https://www.npmjs.com/package/@edictum/core)
 [![Go Reference](https://pkg.go.dev/badge/github.com/edictum-ai/edictum-go.svg)](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-2503.07918-b31b1b.svg)](https://arxiv.org/abs/2503.07918)
+[![arXiv](https://img.shields.io/badge/arXiv-2602.16943-b31b1b.svg)](https://arxiv.org/abs/2602.16943)
 [![Docs](https://img.shields.io/badge/docs-edictum.ai-blue)](https://docs.edictum.ai)
 
 </div>
@@ -57,6 +57,6 @@ pip install edictum
 
 <div align="center">
 
-[Website](https://edictum.ai) · [Docs](https://docs.edictum.ai) · [Research](https://arxiv.org/abs/2503.07918) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/edictum)
+[Website](https://edictum.ai) · [Docs](https://docs.edictum.ai) · [Research](https://arxiv.org/abs/2602.16943) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core)
 
 </div>
