@@ -46,11 +46,10 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 | [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
 | [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
 | [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | OpenClaw plugin and adapter |
-| [edictum-api](https://github.com/edictum-ai/edictum-api) | Server API for approvals, audit, and remote policy |
-| [edictum-hub](https://github.com/edictum-ai/edictum-hub) | Website and dashboard surface |
-| [edictum-docs](https://github.com/edictum-ai/edictum-docs) | Documentation site |
 | [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Shared schemas and conformance fixtures |
 | [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Demo scenarios and example policies |
+
+Private server, website, and docs repos exist in the org, but they are not listed here because this profile is public.
 
 ## Research
 
