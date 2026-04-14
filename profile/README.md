@@ -1,100 +1,64 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/shield-dark.svg">
+  <img src="../assets/shield-light.svg" alt="Edictum shield" width="96" height="96">
+</picture>
+
 # Edictum
 
-### Prompts are suggestions. Contracts are enforcement.
+Runtime enforcement for AI agent tool calls.
 
-Runtime contract enforcement for AI agent tool calls.<br>
-Deterministic YAML contracts that execute outside the model — can't be prompt-injected, fail-closed by default.
-
-**3 SDKs** · **18 Adapters** · **55µs overhead** · **Zero runtime deps** · **Fail-closed**
+Write rules and workflows in YAML. Enforce them at the tool boundary across Python, TypeScript, Go, and OpenClaw.
 
 [![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
 [![npm](https://img.shields.io/npm/v/@edictum/core?label=npm&color=blue)](https://www.npmjs.com/package/@edictum/core)
 [![Go Reference](https://pkg.go.dev/badge/github.com/edictum-ai/edictum-go.svg)](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-2602.16943-b31b1b.svg)](https://arxiv.org/abs/2602.16943)
-[![Docs](https://img.shields.io/badge/docs-edictum.ai-blue)](https://docs.edictum.ai)
+[![Docs](https://img.shields.io/badge/docs-docs.edictum.ai-blue)](https://docs.edictum.ai)
+[![Website](https://img.shields.io/badge/site-edictum.ai-black)](https://edictum.ai)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 
 </div>
 
 ---
 
-## SDKs
+## What Ships
 
-| SDK | Install | Adapters |
-|-----|---------|----------|
-| [**Python**](https://github.com/edictum-ai/edictum) | `pip install edictum` | LangChain, CrewAI, Agno, Semantic Kernel, OpenAI Agents, Claude SDK, Nanobot, Google ADK |
-| [**TypeScript**](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core` | Vercel AI, Claude SDK, LangChain, OpenAI Agents, OpenClaw |
-| [**Go**](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | ADK Go, Anthropic, Eino, Genkit, LangChain Go |
+- Rulesets: deterministic pre, post, session, and sandbox checks for tool calls
+- Workflow Gates: stateful process enforcement for coding-agent flows
+- Server-backed enforcement: approvals, audit feeds, remote rulesets, and hot reload
+- SDKs for Python, TypeScript, and Go, plus OpenClaw integration
 
----
+## Start Here
 
-## OpenClaw Integration
+| Surface | Install | Notes |
+| --- | --- | --- |
+| [Python SDK](https://github.com/edictum-ai/edictum) | `pip install edictum[yaml]` | Reference SDK with 8 framework integrations |
+| [TypeScript SDK](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core @edictum/vercel-ai` | Core runtime plus adapter packages |
+| [Go SDK](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | Includes the `edictum gate` CLI |
+| [OpenClaw integration](https://github.com/edictum-ai/edictum-openclaw) | `openclaw plugins install @edictum/edictum` | Native plugin plus manual adapter path |
 
-> **Native plugin for [OpenClaw](https://github.com/openclaw/openclaw) (322K+ GitHub stars)**
+## Repositories
 
-```bash
-openclaw plugins install @edictum/openclaw
-```
+| Repo | Role |
+| --- | --- |
+| [edictum](https://github.com/edictum-ai/edictum) | Python SDK |
+| [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
+| [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
+| [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | OpenClaw plugin and adapter |
+| [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Shared schemas and conformance fixtures |
+| [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Demo scenarios and example policies |
 
-One command. Zero config. Ships with a **770-line governance bundle** that enforces security contracts on every tool call — file access, network requests, shell commands, secrets handling, and more.
-
-**Why this matters:** We scanned OpenClaw's 36K-skill public registry and **found live C2 malware**. Skills run arbitrary code with your agent's permissions. Edictum enforces contracts so a compromised skill can't exfiltrate data, pivot laterally, or phone home.
-
-Two modes:
-- **Standalone** — bundled contracts, zero config, works out of the box
-- **Console-connected** — hot-reload contracts, fleet monitoring, HITL approvals via [Edictum Console](#console)
-
-[`@edictum/openclaw` on npm](https://www.npmjs.com/package/@edictum/openclaw) · [Source](https://github.com/edictum-ai/edictum-openclaw)
-
----
-
-## Console
-
-Self-hostable ops console for HITL approvals, audit feeds, and fleet monitoring.
-
-```bash
-docker pull ghcr.io/edictum-ai/edictum-console
-```
-
-All 3 SDKs connect via `edictum[server]`. Single Docker image — deploy anywhere.
-
-[edictum-console](https://github.com/edictum-ai/edictum-console)
-
-## Gate
-
-Governance for coding assistants (Claude Code, Cursor, Windsurf).
-
-```bash
-pip install edictum
-```
-
-[Learn more](https://docs.edictum.ai/gate)
+Private server, website, and docs repos exist in the org, but they are not listed here because this profile is public.
 
 ## Research
 
-- **arXiv paper:** [2602.16943 — Runtime Contract Enforcement for AI Agents](https://arxiv.org/abs/2602.16943)
-- **OpenClaw registry scan:** Found live C2 malware in 36K public skills — contracts would have blocked every payload
-
----
-
-## All Repos
-
-| Repo | What |
-|------|------|
-| [edictum](https://github.com/edictum-ai/edictum) | Python SDK — reference implementation, 8 adapters |
-| [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK — monorepo, 5 adapters |
-| [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK — full port, 5 adapters |
-| [edictum-console](https://github.com/edictum-ai/edictum-console) | Ops console — HITL approvals, audit feeds, fleet monitoring |
-| [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | Native OpenClaw plugin — 770-line governance bundle |
-| [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Contract bundle JSON Schema (single source of truth) |
-| [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Scenario demos, adversarial tests, benchmarks |
-
----
+- [Mind the GAP: Text Safety Does Not Transfer to Tool-Call Safety in LLM Agents](https://arxiv.org/abs/2602.16943)
+- [Documentation](https://docs.edictum.ai)
+- [Website](https://edictum.ai)
 
 <div align="center">
 
-[Website](https://edictum.ai) · [Docs](https://docs.edictum.ai) · [Research](https://arxiv.org/abs/2602.16943) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core)
+[docs.edictum.ai](https://docs.edictum.ai) · [edictum.ai](https://edictum.ai) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core) · [Go pkg](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 
 </div>

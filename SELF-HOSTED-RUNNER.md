@@ -54,7 +54,7 @@ pip install uv
 brew install gh
 gh auth login
 
-# Docker (for edictum-console builds)
+# Docker (for containerized builds and workflow jobs)
 brew install --cask docker
 ```
 
