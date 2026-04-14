@@ -27,7 +27,7 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 - Rulesets: deterministic pre, post, session, and sandbox checks for tool calls
 - Workflow Gates: stateful process enforcement for coding-agent flows
 - Server-backed enforcement: approvals, audit feeds, remote rulesets, and hot reload
-- 18 shipped integrations across the ecosystem: 8 Python, 5 TypeScript, 5 Go
+- SDKs for Python, TypeScript, and Go, plus OpenClaw integration
 
 ## Start Here
 
