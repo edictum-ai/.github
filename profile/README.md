@@ -53,7 +53,7 @@ Private server, website, and docs repos exist in the org, but they are not liste
 
 ## Research
 
-- [Runtime Contract Enforcement for AI Agents](https://arxiv.org/abs/2602.16943)
+- [Mind the GAP: Text Safety Does Not Transfer to Tool-Call Safety in LLM Agents](https://arxiv.org/abs/2602.16943)
 - [Documentation](https://docs.edictum.ai)
 - [Website](https://edictum.ai)
 
