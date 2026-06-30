@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="../assets/edictum-mark.svg" alt="Edictum" width="96" height="96">
+<img src="../assets/edictum-mark.svg" alt="" width="40">
+<img src="../assets/captatum-mark.svg" alt="" width="40">
+<img src="../assets/qratum-mark.svg" alt="" width="40">
 
-# Edictum
+# edictum-ai
 
-Runtime enforcement for AI agent tool calls.
-
-Write rules and workflows in YAML. Enforce them at the tool boundary across Python, TypeScript, Go, and OpenClaw. **Captatum** is the governed web-fetch — fetch any URL and capture the evidence.
+A family of tools for AI agents in production — enforcement, fetch, and provenance.
 
 [![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
 [![npm](https://img.shields.io/npm/v/@edictum/core?label=@edictum/core&color=blue)](https://www.npmjs.com/package/@edictum/core)
@@ -20,19 +20,18 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 
 ---
 
-## What Ships
+## Tools
 
-- **Captatum** — adaptive MCP web-fetch for agents: fetch any URL (render JS when needed), return token-efficient content plus a provenance receipt. `npx -y @edictum/captatum`.
-- Rulesets: deterministic pre, post, session, and sandbox checks for tool calls
-- Workflow Gates: stateful process enforcement for coding-agent flows
-- Server-backed enforcement: approvals, audit feeds, remote rulesets, and hot reload
-- SDKs for Python, TypeScript, and Go, plus OpenClaw integration
+| | Tool | Role | Install |
+| --- | --- | --- | --- |
+| <img src="../assets/edictum-mark.svg" width="14"> | [Edictum](https://github.com/edictum-ai/edictum) | Runtime enforcement for agent tool calls — rules and workflow gates at the tool boundary (Python / TypeScript / Go) | `pip install edictum[yaml]` · `pnpm add @edictum/core` · `go get github.com/edictum-ai/edictum-go` |
+| <img src="../assets/captatum-mark.svg" width="14"> | [Captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch — fetch any URL, render JS when needed, return content plus a provenance receipt | `npx -y @edictum/captatum` |
+| <img src="../assets/qratum-mark.svg" width="14"> | [Qratum](https://github.com/edictum-ai/qratum) | Session vault — capture, redact, and prove the provenance of agent runs | see [repo](https://github.com/edictum-ai/qratum) |
 
-## Start Here
+## Edictum SDKs
 
 | Surface | Install | Notes |
 | --- | --- | --- |
-| <img src="../assets/captatum-mark.svg" alt="" width="14" valign="middle"> [Captatum](https://github.com/edictum-ai/captatum) | `npx -y @edictum/captatum` | Adaptive MCP web-fetch — fetch any site, get content + a provenance receipt |
 | [Python SDK](https://github.com/edictum-ai/edictum) | `pip install edictum[yaml]` | Reference SDK with 8 framework integrations |
 | [TypeScript SDK](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core @edictum/vercel-ai` | Core runtime plus adapter packages |
 | [Go SDK](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | Includes the `edictum gate` CLI |
@@ -42,13 +41,14 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 
 | Repo | Role |
 | --- | --- |
-| [captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch (fetch any site + provenance receipt) |
+| [captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch |
 | [edictum](https://github.com/edictum-ai/edictum) | Python SDK |
 | [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
 | [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
 | [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | OpenClaw plugin and adapter |
 | [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Shared schemas and conformance fixtures |
 | [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Demo scenarios and example policies |
+| [qratum](https://github.com/edictum-ai/qratum) | Session provenance vault |
 
 Private server, website, and docs repos exist in the org, but they are not listed here because this profile is public.
 
@@ -60,6 +60,6 @@ Private server, website, and docs repos exist in the org, but they are not liste
 
 <div align="center">
 
-[<img src="../assets/captatum-mark.svg" alt="" width="14" valign="middle"> Captatum](https://github.com/edictum-ai/captatum) · [docs.edictum.ai](https://docs.edictum.ai) · [edictum.ai](https://edictum.ai) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core) · [Go pkg](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
+[docs.edictum.ai](https://docs.edictum.ai) · [edictum.ai](https://edictum.ai) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core) · [Go pkg](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 
 </div>
