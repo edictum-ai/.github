@@ -1,18 +1,16 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/shield-dark.svg">
-  <img src="../assets/shield-light.svg" alt="Edictum shield" width="96" height="96">
-</picture>
+<img src="../assets/edictum-mark.svg" alt="Edictum" width="96" height="96">
 
 # Edictum
 
 Runtime enforcement for AI agent tool calls.
 
-Write rules and workflows in YAML. Enforce them at the tool boundary across Python, TypeScript, Go, and OpenClaw.
+Write rules and workflows in YAML. Enforce them at the tool boundary across Python, TypeScript, Go, and OpenClaw. **Captatum** is the governed web-fetch — fetch any URL and capture the evidence.
 
 [![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
-[![npm](https://img.shields.io/npm/v/@edictum/core?label=npm&color=blue)](https://www.npmjs.com/package/@edictum/core)
+[![npm](https://img.shields.io/npm/v/@edictum/core?label=@edictum/core&color=blue)](https://www.npmjs.com/package/@edictum/core)
+[![npm captatum](https://img.shields.io/npm/v/@edictum/captatum?label=@edictum/captatum&color=blue)](https://www.npmjs.com/package/@edictum/captatum)
 [![Go Reference](https://pkg.go.dev/badge/github.com/edictum-ai/edictum-go.svg)](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 [![Docs](https://img.shields.io/badge/docs-docs.edictum.ai-blue)](https://docs.edictum.ai)
 [![Website](https://img.shields.io/badge/site-edictum.ai-black)](https://edictum.ai)
@@ -24,6 +22,7 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 
 ## What Ships
 
+- **Captatum** — adaptive MCP web-fetch for agents: fetch any URL (render JS when needed), return token-efficient content plus a provenance receipt. `npx -y @edictum/captatum`.
 - Rulesets: deterministic pre, post, session, and sandbox checks for tool calls
 - Workflow Gates: stateful process enforcement for coding-agent flows
 - Server-backed enforcement: approvals, audit feeds, remote rulesets, and hot reload
@@ -33,6 +32,7 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 
 | Surface | Install | Notes |
 | --- | --- | --- |
+| <img src="../assets/captatum-mark.svg" alt="" width="14" valign="middle"> [Captatum](https://github.com/edictum-ai/captatum) | `npx -y @edictum/captatum` | Adaptive MCP web-fetch — fetch any site, get content + a provenance receipt |
 | [Python SDK](https://github.com/edictum-ai/edictum) | `pip install edictum[yaml]` | Reference SDK with 8 framework integrations |
 | [TypeScript SDK](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core @edictum/vercel-ai` | Core runtime plus adapter packages |
 | [Go SDK](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | Includes the `edictum gate` CLI |
@@ -42,6 +42,7 @@ Write rules and workflows in YAML. Enforce them at the tool boundary across Pyth
 
 | Repo | Role |
 | --- | --- |
+| [captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch (fetch any site + provenance receipt) |
 | [edictum](https://github.com/edictum-ai/edictum) | Python SDK |
 | [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
 | [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
@@ -59,6 +60,6 @@ Private server, website, and docs repos exist in the org, but they are not liste
 
 <div align="center">
 
-[docs.edictum.ai](https://docs.edictum.ai) · [edictum.ai](https://edictum.ai) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core) · [Go pkg](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
+[<img src="../assets/captatum-mark.svg" alt="" width="14" valign="middle"> Captatum](https://github.com/edictum-ai/captatum) · [docs.edictum.ai](https://docs.edictum.ai) · [edictum.ai](https://edictum.ai) · [PyPI](https://pypi.org/project/edictum/) · [npm](https://www.npmjs.com/package/@edictum/core) · [Go pkg](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 
 </div>
