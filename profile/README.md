@@ -22,11 +22,11 @@ A family of tools for AI agents in production — enforcement, fetch, and proven
 
 ## Tools
 
-| | Tool | Role | Install |
-| --- | --- | --- | --- |
-| <img src="../assets/edictum-mark.svg" width="14"> | [Edictum](https://github.com/edictum-ai/edictum) | Runtime enforcement for agent tool calls — rules and workflow gates at the tool boundary (Python / TypeScript / Go) | `pip install edictum[yaml]` · `pnpm add @edictum/core` · `go get github.com/edictum-ai/edictum-go` |
-| <img src="../assets/captatum-mark.svg" width="14"> | [Captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch — fetch any URL, render JS when needed, return content plus a provenance receipt | `npx -y @edictum/captatum` |
-| <img src="../assets/qratum-mark.svg" width="14"> | [Qratum](https://github.com/edictum-ai/qratum) | Session vault — capture, redact, and prove the provenance of agent runs | see [repo](https://github.com/edictum-ai/qratum) |
+| Tool | Role | Install |
+| --- | --- | --- |
+| <img src="../assets/edictum-mark.svg" width="14" valign="middle"> [Edictum](https://github.com/edictum-ai/edictum) | Runtime enforcement for agent tool calls — rules and workflow gates at the tool boundary (Python / TypeScript / Go) | `pip install edictum[yaml]` · `pnpm add @edictum/core` · `go get github.com/edictum-ai/edictum-go` |
+| <img src="../assets/captatum-mark.svg" width="14" valign="middle"> [Captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch — fetch any URL, render JS when needed, return content plus a provenance receipt | `npx -y @edictum/captatum` |
+| <img src="../assets/qratum-mark.svg" width="14" valign="middle"> [Qratum](https://github.com/edictum-ai/qratum) | Session vault — capture, redact, and prove the provenance of agent runs | see [repo](https://github.com/edictum-ai/qratum) |
 
 ## Edictum SDKs
 
