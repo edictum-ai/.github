@@ -1,16 +1,13 @@
 <div align="center">
 
 <img src="../assets/edictum-mark.svg" alt="" width="40">
-<img src="../assets/captatum-mark.svg" alt="" width="40">
-<img src="../assets/qratum-mark.svg" alt="" width="40">
 
 # edictum-ai
 
-A family of tools for AI agents in production — enforcement, fetch, and provenance.
+Runtime governance for AI agents — allow, block, or require approval on tool calls, with a full audit trail, before they execute.
 
 [![PyPI](https://img.shields.io/pypi/v/edictum?label=PyPI&color=blue)](https://pypi.org/project/edictum/)
 [![npm](https://img.shields.io/npm/v/@edictum/core?label=@edictum/core&color=blue)](https://www.npmjs.com/package/@edictum/core)
-[![npm captatum](https://img.shields.io/npm/v/@edictum/captatum?label=@edictum/captatum&color=blue)](https://www.npmjs.com/package/@edictum/captatum)
 [![Go Reference](https://pkg.go.dev/badge/github.com/edictum-ai/edictum-go.svg)](https://pkg.go.dev/github.com/edictum-ai/edictum-go)
 [![Docs](https://img.shields.io/badge/docs-docs.edictum.ai-blue)](https://docs.edictum.ai)
 [![Website](https://img.shields.io/badge/site-edictum.ai-black)](https://edictum.ai)
@@ -20,13 +17,13 @@ A family of tools for AI agents in production — enforcement, fetch, and proven
 
 ---
 
-## Tools
+## Edictum
 
-| Tool | Role | Install |
-| --- | --- | --- |
-| <img src="../assets/edictum-mark.svg" width="14" valign="middle"> [Edictum](https://github.com/edictum-ai/edictum) | Runtime enforcement for agent tool calls — rules and workflow gates at the tool boundary (Python / TypeScript / Go) | `pip install edictum[yaml]` · `pnpm add @edictum/core` · `go get github.com/edictum-ai/edictum-go` |
-| <img src="../assets/captatum-mark.svg" width="14" valign="middle"> [Captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch — fetch any URL, render JS when needed, return content plus a provenance receipt | `npx -y @edictum/captatum` |
-| <img src="../assets/qratum-mark.svg" width="14" valign="middle"> [Qratum](https://github.com/edictum-ai/qratum) | Session vault — capture, redact, and prove the provenance of agent runs | see [repo](https://github.com/edictum-ai/qratum) |
+Runtime enforcement for agent tool calls — deterministic rules and workflow gates at the tool boundary, with an audit trail on every decision. Available for Python, TypeScript, and Go.
+
+| Surface | Install |
+| --- | --- |
+| <img src="../assets/edictum-mark.svg" width="14" valign="middle"> [Edictum](https://github.com/edictum-ai/edictum) | `pip install edictum[yaml]` · `pnpm add @edictum/core` · `go get github.com/edictum-ai/edictum-go` |
 
 ## Edictum SDKs
 
@@ -41,16 +38,14 @@ A family of tools for AI agents in production — enforcement, fetch, and proven
 
 | Repo | Role |
 | --- | --- |
-| [captatum](https://github.com/edictum-ai/captatum) | Adaptive MCP web-fetch |
 | [edictum](https://github.com/edictum-ai/edictum) | Python SDK |
 | [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
 | [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
 | [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | OpenClaw plugin and adapter |
 | [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Shared schemas and conformance fixtures |
 | [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Demo scenarios and example policies |
-| [qratum](https://github.com/edictum-ai/qratum) | Session provenance vault |
 
-Private server, website, and docs repos exist in the org, but they are not listed here because this profile is public.
+Private platform, website, and docs repos also exist in the org. They are not listed here because this profile is public.
 
 ## Research
 
