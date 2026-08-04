@@ -32,7 +32,6 @@ Runtime enforcement for agent tool calls — deterministic rules and workflow ga
 | [Python SDK](https://github.com/edictum-ai/edictum) | `pip install edictum[yaml]` | Reference SDK with 8 framework integrations |
 | [TypeScript SDK](https://github.com/edictum-ai/edictum-ts) | `pnpm add @edictum/core @edictum/vercel-ai` | Core runtime plus adapter packages |
 | [Go SDK](https://github.com/edictum-ai/edictum-go) | `go get github.com/edictum-ai/edictum-go` | Includes the `edictum gate` CLI |
-| [OpenClaw integration](https://github.com/edictum-ai/edictum-openclaw) | `openclaw plugins install @edictum/edictum` | Native plugin plus manual adapter path |
 
 ## Repositories
 
@@ -41,7 +40,6 @@ Runtime enforcement for agent tool calls — deterministic rules and workflow ga
 | [edictum](https://github.com/edictum-ai/edictum) | Python SDK |
 | [edictum-ts](https://github.com/edictum-ai/edictum-ts) | TypeScript SDK monorepo |
 | [edictum-go](https://github.com/edictum-ai/edictum-go) | Go SDK and Gate CLI |
-| [edictum-openclaw](https://github.com/edictum-ai/edictum-openclaw) | OpenClaw plugin and adapter |
 | [edictum-schemas](https://github.com/edictum-ai/edictum-schemas) | Shared schemas and conformance fixtures |
 | [edictum-demo](https://github.com/edictum-ai/edictum-demo) | Demo scenarios and example policies |
 
