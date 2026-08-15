@@ -162,6 +162,10 @@ jobs:
             exit 1
           fi
           count=$(find edictum-schemas/fixtures \( -name '*.yaml' -o -name '*.json' \) -print | wc -l)
+          if [ "$count" -eq 0 ]; then
+            echo "::error::Fixtures directory in edictum-schemas@${FIXTURE_REF} exists but contains zero fixture files"
+            exit 1
+          fi
           echo "Found $count fixture file(s)"
           {
             echo "## Conformance fixtures ($count files)"
@@ -201,9 +205,15 @@ jobs:
       - name: Install dependencies
         run: ${{ inputs.setup-command }}
 
+      # EDICTUM_SCHEMAS_DIR is the single supported fixture-location variable:
+      # an absolute path to the schemas checkout root. Every runner derives
+      # its own suite subdirectory from it. EDICTUM_FIXTURES_DIR is retired —
+      # it exported the fixtures ROOT while the TS and Go rejection runners
+      # read it as the rejection/ subdirectory, so one name silently meant
+      # three different paths (spec 02 fact 14).
       - name: Run conformance tests
         env:
-          EDICTUM_FIXTURES_DIR: edictum-schemas/fixtures
+          EDICTUM_SCHEMAS_DIR: ${{ github.workspace }}/edictum-schemas
         run: ${{ inputs.conformance-command }}
 
       - name: Upload failure artifacts
